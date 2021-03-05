@@ -1,7 +1,7 @@
 from django.db import models
 
 class SalesPerson(models.Model):
-    name = models.CharField(max_length=30, verbose_name='nome')
+    name = models.CharField(max_length=30, verbose_name='nome fantasia')
     company_name = models.CharField(max_length=90, verbose_name='razão social')
     cnpj = models.IntegerField(verbose_name='cnpj')
     email = models.CharField(max_length=256, verbose_name='e-mail de contato')
