@@ -20,3 +20,15 @@ class SalesPersonSerializer(serializers.HyperlinkedModelSerializer):
         salesperson = SalesPerson.objects.create(address=address, **validated_data)
         return salesperson
 
+    def update(self, instance, validated_data):
+        address = validated_data.pop('address')
+        address = instance.address
+        instance.name = validated_data.get('name', instance.name)
+        instance.company_name = validated_data.get('company_name', instance.company_name)
+        instance.cnpj = validated_data.get('cnpj', instance.cnpj)
+        instance.email = validated_data.get('email', instance.email)
+        instance.telephone = validated_data.get('telephone', instance.telephone)
+
+        instance.save()
+        return instance
+
